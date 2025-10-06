@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "target": "es2024",
+        "sourceMap": true,
+        "outDir": "dist"
+    },
+    "include": ["src/**/*"],
+}
