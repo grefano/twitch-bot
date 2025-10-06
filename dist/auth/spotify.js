@@ -17,6 +17,6 @@ const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
     })
 });
 const tokenData = await tokenResponse.json();
-const spotify_token_access = tokenData.access_token;
-export { spotify_token_access };
+const spotifyTokenAccess = tokenData.access_token;
+export { spotifyTokenAccess };
 //# sourceMappingURL=spotify.js.map
