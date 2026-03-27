@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-import {spotify} from "./api/spotify.js";
+import {spotify} from "./api/initspotify.js";
 import { botNick, botOAuth, botChannel, idClient, idBroadcaster, idMod} from "./api/twitch.js"
 import { isSetIterator } from 'node:util/types';
 

@@ -1,4 +1,4 @@
-
+import { addTrackToQueue } from "../api/controlspotify.js";
 const isValidUrl = (str: string) => {
     try {
         new URL(str);
@@ -34,19 +34,7 @@ export default async function commandSongRequest (context: IContextCommand){
         return
     }
 
-    const addTrackToQueue = async (trackid: string) => {
-        const response = await fetch("https://api.spotify.com/v1/me/player/queue?uri=spotify%3Atrack%3A"+trackid, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${spotifyTokenAccess}`
-            }
-        })
-        console.log(response)
-        if (response.status == 200 || response.status == 204){
-            return true
-        }
-        return `error ${response.status} - ${response.statusText}`
-    }
+  
 
     let argtype = identifyArgTypeForTrack(msgArgs[0])
     let trackid = ''

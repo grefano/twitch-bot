@@ -3,15 +3,6 @@ import * as dotenv from 'dotenv'
 dotenv.config()
 import SpotifyWebApi from 'spotify-web-api-node'
 
-// const authUrl = `https://accounts.spotify.com/authorize?` +
-//     `client_id=${process.env.SPOTIFY_ID_CLIENT}&` +
-//     `response_type=code&` +
-//     `redirect_uri=${encodeURIComponent("http://127.0.0.1:3000/callback")}&` +
-//     `scope=${encodeURIComponent("user-read-playback-state user-modify-playback-state")}`
-
-// console.log("Abra este link:", authUrl);
-
-
 const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -27,7 +18,7 @@ const tokenData = await tokenResponse.json()
 
 const spotifyTokenAccess = tokenData.access_token;
 
-const spotify = new SpotifyWebApi({clientId: process.env.SPOTIFY_ID_CLIENT, clientSecret: process.env.SPOTIFY_SECRET_CLIENT})
+const spotify = new SpotifyWebApi({clientId: process.env.SPOTIFY_ID_CLIENT, clientSecret: process.env.SPOTIFY_SECRET_CLIENT, redirectUri: 'http://127.0.0.1:3000/callback'})
 spotify.setAccessToken(spotifyTokenAccess)
 
 export { spotify };
