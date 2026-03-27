@@ -53,7 +53,6 @@ async function createGenreMap(songs: Song[]): Promise<Map<string, Set<Song>>>{
     console.log(s.name + ":")
     for (const a of s.artists){
       let artist = await spotifyReq((api) => api.getArtist(a.id))
-      console.log("- " + artist.body.name + " " + artist.body.genres[0])
       
       for(const g of artist.body.genres){
         const set = genreToSongs.get(g) ?? new Set<Song>()
@@ -78,6 +77,9 @@ async function getSongFeatures(trackIds: string[]): Promise<SongFeatures[]>{
   let res = (await fetch(`https://api.reccobeats.com/v1/audio-features?ids=${tracksidformat}`, {method: 'GET'}))
   let data: any[] = (await res.json())['content']
 
+
+  // a reponse pode vir com menos resultados que esperado, 
+  // é preciso verificar se cada musica obteve uma resposta
   let result = []
   trackIds.forEach((val) => {
     let index = data.findIndex((a) => {
@@ -103,50 +105,50 @@ async function getSongFeatures(trackIds: string[]): Promise<SongFeatures[]>{
   return result
 }
 async function main() {
+  const jsonpath = "songs.json"
 
 
 
   let reqlikedsongs = spotifyReq((api) => api.getMySavedTracks())
   let likedsongs = apiResponseToSongArray((await reqlikedsongs).body.items)
 
-  const file = await readFile("songs.json", 'utf-8')
+  const file = await readFile(jsonpath, 'utf-8')
   const jsonfile = JSON.parse(file)
   const storedsongs = new Map<string, Set<Song>>(Object.entries(jsonfile).map(([genre, songs]) => [genre, new Set(songs as Song[])]))
 
 
+  console.log('liked songs', likedsongs.map((val) => val.name))
 
 
   let storeduniquesongs = new Set<Song>()
   for(const genresongs of storedsongs.values()){
     for(const song of genresongs.values()){
-      console.log(JSON.stringify(song, null, 2))
       storeduniquesongs.add(song)
-      
     }
   }
 
+  let _storedsongs = ""
+  for(const s of storeduniquesongs){
+    _storedsongs += s.name
+  }
+  console.log('stored songs', _storedsongs)
 
-  // let newsongs = new Set<Song>()
+
   let newsongs = likedsongs;
-  // comparar liekdsongs com storedsongs
   for(const s of storeduniquesongs.values()){
-    
     newsongs = newsongs.filter(song => song.uri != s.uri)
   }
-  console.log('new songs', newsongs)
+  console.log('new songs', newsongs.map((val) => val.name))
   
   songsEnrichFeatures(newsongs)
 
-  let genreToSongs = await createGenreMap(newsongs)
-  console.log(genreToSongs)
+  let genreToSongs = await createGenreMap([...storeduniquesongs, ...newsongs])
 
-  const jsonpath = "songs.json"
   fs.writeFileSync(jsonpath, JSON.stringify(Object.fromEntries( [...genreToSongs.entries()].map(([genre, songs]) => [genre, [...songs]])), null, 2))
 
   // add genre to queue
   let songs = genreToSongs.get("art rock")
   for (const j of songs){
-    console.log(j.name)
     addTrackToQueue(j.uri)
   }
 
