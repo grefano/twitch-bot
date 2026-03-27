@@ -1,16 +1,12 @@
-
-import * as dotenv from 'dotenv'
-dotenv.config()
-
+import * as dotenv from 'dotenv';
+dotenv.config();
+import SpotifyWebApi from 'spotify-web-api-node';
 // const authUrl = `https://accounts.spotify.com/authorize?` +
 //     `client_id=${process.env.SPOTIFY_ID_CLIENT}&` +
 //     `response_type=code&` +
 //     `redirect_uri=${encodeURIComponent("http://127.0.0.1:3000/callback")}&` +
 //     `scope=${encodeURIComponent("user-read-playback-state user-modify-playback-state")}`
-
 // console.log("Abra este link:", authUrl);
-
-
 const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -20,11 +16,10 @@ const tokenResponse = await fetch("https://accounts.spotify.com/api/token", {
         client_id: process.env.SPOTIFY_ID_CLIENT,
         client_secret: process.env.SPOTIFY_SECRET_CLIENT
     })
-})
-
-const tokenData = await tokenResponse.json()
-
+});
+const tokenData = await tokenResponse.json();
 const spotifyTokenAccess = tokenData.access_token;
-
-export { spotifyTokenAccess };
-
+const spotify = new SpotifyWebApi({ clientId: process.env.SPOTIFY_ID_CLIENT, clientSecret: process.env.SPOTIFY_SECRET_CLIENT });
+spotify.setAccessToken(spotifyTokenAccess);
+export { spotify };
+//# sourceMappingURL=spotify.js.map

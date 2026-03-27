@@ -59,6 +59,9 @@ export default async function commandSongRequest(context) {
             trackid = linksplitted[linksplitted.length - 1].split('?')[0];
             console.log('track id', trackid);
             break;
+        case 'youtube-link':
+            socket.send(`PRIVMSG #${botChannel} :apenas links do spotify são válidos`);
+            break;
         case 'title':
             console.log('title');
             const search_res = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(argTrack)}&type=track&limit=1`, {
@@ -71,7 +74,7 @@ export default async function commandSongRequest(context) {
             trackid = search_data.tracks.items[0]?.id;
             break;
         case 'link':
-            socket.send(`PRIVMSG #${botChannel} :o link ${msgArgs[0]} não é do youtube nem do spotify`);
+            socket.send(`PRIVMSG #${botChannel} :o link ${msgArgs[0]} não é do spotify`);
             break;
         default:
             socket.send(`PRIVMSG #${botChannel} :${msgArgs[0]} não é uma música válida`);

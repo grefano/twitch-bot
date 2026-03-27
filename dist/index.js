@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
-import { spotifyTokenAccess } from "./auth/spotify.js";
-import { botNick, botOAuth, botChannel, idClient, idBroadcaster, idMod } from "./auth/twitch.js";
+import { spotify } from "./api/spotify.js";
+import { botNick, botOAuth, botChannel, idClient, idBroadcaster, idMod } from "./api/twitch.js";
 // (async () => {
 //     fetch("https://api.spotify.com/v1/me/player", {
 //         headers: {
@@ -40,7 +40,7 @@ socket.addEventListener('message', async (event) => {
     const idMatch = event.data.match(/id=([^;]+)/);
     const userMatch = event.data.match(/:(\w+)!/);
     const messageMatch = event.data.match(/PRIVMSG #\w+ :(.+)/);
-    // console.log(`id ${idMatch} user ${userMatch} msg ${messageMatch}`)
+    console.log(`id ${idMatch} user ${userMatch} msg ${messageMatch}`);
     if (idMatch && userMatch && messageMatch) {
         const msgId = idMatch[1];
         const msgUsername = userMatch[1];
@@ -52,7 +52,7 @@ socket.addEventListener('message', async (event) => {
         const command = getMsgCommand(msgCommand);
         if (command == false)
             return;
-        const context = { socket, msgId, msgUsername, msgArgs, botChannel, botOAuth, msgCommand, idClient, idBroadcaster, idMod, spotifyTokenAccess };
+        const context = { socket, msgId, msgUsername, msgArgs, botChannel, botOAuth, msgCommand, idClient, idBroadcaster, idMod, spotifyTokenAccess: spotify.getAccessToken() };
         const commands = createCommands(context);
         if (typeof commands[command] === 'function') {
             commands[command]();

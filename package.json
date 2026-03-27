@@ -6,16 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "spotify": "tsc && node dist/spotify/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "@types/node": "^24.6.2"
+    "@types/node": "^24.6.2",
+    "@types/spotify-web-api-node": "^5.0.11"
   },
   "dependencies": {
-    "dotenv": "^17.2.3"
+    "@types/spotify-api": "^0.0.26",
+    "dotenv": "^17.2.3",
+    "spotify-web-api-node": "^5.0.2"
   }
 }
