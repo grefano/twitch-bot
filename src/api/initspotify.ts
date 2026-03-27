@@ -14,14 +14,13 @@ spotify.refreshAccessToken((err, res)=>{
         console.log('refresh token err ', JSON.stringify(err, null, 2))
         return
     }
-    console.log('new access token ',  res.body.access_token)
     spotify.setAccessToken(res.body.access_token)
     readyResolve()
 
 })
 
 
-async function spotifyReq(fn){
+async function spotifyReq<T>(fn: (a: SpotifyWebApi) => Promise<T> | T): Promise<T>{
     await readyPromise
     return fn(spotify)
 }

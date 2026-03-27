@@ -1,0 +1,889 @@
+{
+  "samba": [
+    {
+      "uri": "spotify:track:2TI5GBkbrrFtZRM5v1heeb",
+      "name": "Trem Das Onze",
+      "artists": [
+        "Adoniran Barbosa"
+      ],
+      "genres": [
+        "samba",
+        "mpb",
+        "bossa nova"
+      ],
+      "features": {
+        "acousticness": 0.0137,
+        "danceability": 0.604,
+        "energy": 0.933,
+        "instrumentalness": 0,
+        "liveness": 0.37,
+        "loudness": -3.034,
+        "speechiness": 0.214,
+        "valence": 0.28
+      }
+    }
+  ],
+  "mpb": [
+    {
+      "uri": "spotify:track:2TI5GBkbrrFtZRM5v1heeb",
+      "name": "Trem Das Onze",
+      "artists": [
+        "Adoniran Barbosa"
+      ],
+      "genres": [
+        "samba",
+        "mpb",
+        "bossa nova"
+      ],
+      "features": {
+        "acousticness": 0.0137,
+        "danceability": 0.604,
+        "energy": 0.933,
+        "instrumentalness": 0,
+        "liveness": 0.37,
+        "loudness": -3.034,
+        "speechiness": 0.214,
+        "valence": 0.28
+      }
+    },
+    {
+      "uri": "spotify:track:7q6zyz40cyqctGM446Q5MQ",
+      "name": "Numa Sala de Reboco",
+      "artists": [
+        "Luiz Gonzaga"
+      ],
+      "genres": [
+        "forró tradicional",
+        "forró",
+        "mpb"
+      ],
+      "features": {
+        "acousticness": 0.355,
+        "danceability": 0.732,
+        "energy": 0.925,
+        "instrumentalness": 0.000146,
+        "liveness": 0.26,
+        "loudness": -5.232,
+        "speechiness": 0.0367,
+        "valence": 0.934
+      }
+    },
+    {
+      "uri": "spotify:track:7oohAw9hiIMJqnewJ7vhOk",
+      "name": "Pagode Russo",
+      "artists": [
+        "Luiz Gonzaga"
+      ],
+      "genres": [
+        "forró tradicional",
+        "forró",
+        "mpb"
+      ],
+      "features": {
+        "acousticness": 0.775,
+        "danceability": 0.503,
+        "energy": 0.252,
+        "instrumentalness": 0.915,
+        "liveness": 0.0805,
+        "loudness": -17.068,
+        "speechiness": 0.0496,
+        "valence": 0.602
+      }
+    }
+  ],
+  "bossa nova": [
+    {
+      "uri": "spotify:track:2TI5GBkbrrFtZRM5v1heeb",
+      "name": "Trem Das Onze",
+      "artists": [
+        "Adoniran Barbosa"
+      ],
+      "genres": [
+        "samba",
+        "mpb",
+        "bossa nova"
+      ],
+      "features": {
+        "acousticness": 0.0137,
+        "danceability": 0.604,
+        "energy": 0.933,
+        "instrumentalness": 0,
+        "liveness": 0.37,
+        "loudness": -3.034,
+        "speechiness": 0.214,
+        "valence": 0.28
+      }
+    }
+  ],
+  "brega": [
+    {
+      "uri": "spotify:track:2sdBjJLBVpvRPWqqh37EAI",
+      "name": "Procure Sorrir",
+      "artists": [
+        "Balthazar"
+      ],
+      "genres": [
+        "brega",
+        "seresta"
+      ],
+      "features": {
+        "acousticness": 0.114,
+        "danceability": 0.762,
+        "energy": 0.604,
+        "instrumentalness": 0,
+        "liveness": 0.0271,
+        "loudness": -5.296,
+        "speechiness": 0.11,
+        "valence": 0.847
+      }
+    }
+  ],
+  "seresta": [
+    {
+      "uri": "spotify:track:2sdBjJLBVpvRPWqqh37EAI",
+      "name": "Procure Sorrir",
+      "artists": [
+        "Balthazar"
+      ],
+      "genres": [
+        "brega",
+        "seresta"
+      ],
+      "features": {
+        "acousticness": 0.114,
+        "danceability": 0.762,
+        "energy": 0.604,
+        "instrumentalness": 0,
+        "liveness": 0.0271,
+        "loudness": -5.296,
+        "speechiness": 0.11,
+        "valence": 0.847
+      }
+    }
+  ],
+  "progressive rock": [
+    {
+      "uri": "spotify:track:6DrRLGXrssVpYSrnMerAhO",
+      "name": "Nothing Is Easy",
+      "artists": [
+        "Jethro Tull"
+      ],
+      "genres": [
+        "progressive rock",
+        "classic rock",
+        "art rock"
+      ],
+      "features": {
+        "acousticness": 0.109,
+        "danceability": 0.472,
+        "energy": 0.942,
+        "instrumentalness": 0.859,
+        "liveness": 0.155,
+        "loudness": -14.562,
+        "speechiness": 0.051,
+        "valence": 0.757
+      }
+    },
+    {
+      "uri": "spotify:track:5Uene4exc7GwWYDN6X3Ihd",
+      "name": "Bourée",
+      "artists": [
+        "Jethro Tull"
+      ],
+      "genres": [
+        "progressive rock",
+        "classic rock",
+        "art rock"
+      ],
+      "features": {
+        "acousticness": 0.0265,
+        "danceability": 0.44,
+        "energy": 0.778,
+        "instrumentalness": 0.00000104,
+        "liveness": 0.151,
+        "loudness": -1.786,
+        "speechiness": 0.0327,
+        "valence": 0.304
+      }
+    }
+  ],
+  "classic rock": [
+    {
+      "uri": "spotify:track:6DrRLGXrssVpYSrnMerAhO",
+      "name": "Nothing Is Easy",
+      "artists": [
+        "Jethro Tull"
+      ],
+      "genres": [
+        "progressive rock",
+        "classic rock",
+        "art rock"
+      ],
+      "features": {
+        "acousticness": 0.109,
+        "danceability": 0.472,
+        "energy": 0.942,
+        "instrumentalness": 0.859,
+        "liveness": 0.155,
+        "loudness": -14.562,
+        "speechiness": 0.051,
+        "valence": 0.757
+      }
+    },
+    {
+      "uri": "spotify:track:5Uene4exc7GwWYDN6X3Ihd",
+      "name": "Bourée",
+      "artists": [
+        "Jethro Tull"
+      ],
+      "genres": [
+        "progressive rock",
+        "classic rock",
+        "art rock"
+      ],
+      "features": {
+        "acousticness": 0.0265,
+        "danceability": 0.44,
+        "energy": 0.778,
+        "instrumentalness": 0.00000104,
+        "liveness": 0.151,
+        "loudness": -1.786,
+        "speechiness": 0.0327,
+        "valence": 0.304
+      }
+    }
+  ],
+  "art rock": [
+    {
+      "uri": "spotify:track:6DrRLGXrssVpYSrnMerAhO",
+      "name": "Nothing Is Easy",
+      "artists": [
+        "Jethro Tull"
+      ],
+      "genres": [
+        "progressive rock",
+        "classic rock",
+        "art rock"
+      ],
+      "features": {
+        "acousticness": 0.109,
+        "danceability": 0.472,
+        "energy": 0.942,
+        "instrumentalness": 0.859,
+        "liveness": 0.155,
+        "loudness": -14.562,
+        "speechiness": 0.051,
+        "valence": 0.757
+      }
+    },
+    {
+      "uri": "spotify:track:5Uene4exc7GwWYDN6X3Ihd",
+      "name": "Bourée",
+      "artists": [
+        "Jethro Tull"
+      ],
+      "genres": [
+        "progressive rock",
+        "classic rock",
+        "art rock"
+      ],
+      "features": {
+        "acousticness": 0.0265,
+        "danceability": 0.44,
+        "energy": 0.778,
+        "instrumentalness": 0.00000104,
+        "liveness": 0.151,
+        "loudness": -1.786,
+        "speechiness": 0.0327,
+        "valence": 0.304
+      }
+    }
+  ],
+  "forró tradicional": [
+    {
+      "uri": "spotify:track:7q6zyz40cyqctGM446Q5MQ",
+      "name": "Numa Sala de Reboco",
+      "artists": [
+        "Luiz Gonzaga"
+      ],
+      "genres": [
+        "forró tradicional",
+        "forró",
+        "mpb"
+      ],
+      "features": {
+        "acousticness": 0.355,
+        "danceability": 0.732,
+        "energy": 0.925,
+        "instrumentalness": 0.000146,
+        "liveness": 0.26,
+        "loudness": -5.232,
+        "speechiness": 0.0367,
+        "valence": 0.934
+      }
+    },
+    {
+      "uri": "spotify:track:7oohAw9hiIMJqnewJ7vhOk",
+      "name": "Pagode Russo",
+      "artists": [
+        "Luiz Gonzaga"
+      ],
+      "genres": [
+        "forró tradicional",
+        "forró",
+        "mpb"
+      ],
+      "features": {
+        "acousticness": 0.775,
+        "danceability": 0.503,
+        "energy": 0.252,
+        "instrumentalness": 0.915,
+        "liveness": 0.0805,
+        "loudness": -17.068,
+        "speechiness": 0.0496,
+        "valence": 0.602
+      }
+    }
+  ],
+  "forró": [
+    {
+      "uri": "spotify:track:7q6zyz40cyqctGM446Q5MQ",
+      "name": "Numa Sala de Reboco",
+      "artists": [
+        "Luiz Gonzaga"
+      ],
+      "genres": [
+        "forró tradicional",
+        "forró",
+        "mpb"
+      ],
+      "features": {
+        "acousticness": 0.355,
+        "danceability": 0.732,
+        "energy": 0.925,
+        "instrumentalness": 0.000146,
+        "liveness": 0.26,
+        "loudness": -5.232,
+        "speechiness": 0.0367,
+        "valence": 0.934
+      }
+    },
+    {
+      "uri": "spotify:track:7oohAw9hiIMJqnewJ7vhOk",
+      "name": "Pagode Russo",
+      "artists": [
+        "Luiz Gonzaga"
+      ],
+      "genres": [
+        "forró tradicional",
+        "forró",
+        "mpb"
+      ],
+      "features": {
+        "acousticness": 0.775,
+        "danceability": 0.503,
+        "energy": 0.252,
+        "instrumentalness": 0.915,
+        "liveness": 0.0805,
+        "loudness": -17.068,
+        "speechiness": 0.0496,
+        "valence": 0.602
+      }
+    }
+  ],
+  "neue deutsche welle": [
+    {
+      "uri": "spotify:track:44fNhBfmBUhaByY0651VIc",
+      "name": "Irgendwie, irgendwo, irgendwann (Special 12\" Dance Mix)",
+      "artists": [
+        "Nena"
+      ],
+      "genres": [
+        "neue deutsche welle",
+        "schlager",
+        "german pop"
+      ],
+      "features": {
+        "acousticness": 0.637,
+        "danceability": 0.583,
+        "energy": 0.513,
+        "instrumentalness": 0,
+        "liveness": 0.352,
+        "loudness": -8.619,
+        "speechiness": 0.047,
+        "valence": 0.955
+      }
+    }
+  ],
+  "schlager": [
+    {
+      "uri": "spotify:track:44fNhBfmBUhaByY0651VIc",
+      "name": "Irgendwie, irgendwo, irgendwann (Special 12\" Dance Mix)",
+      "artists": [
+        "Nena"
+      ],
+      "genres": [
+        "neue deutsche welle",
+        "schlager",
+        "german pop"
+      ],
+      "features": {
+        "acousticness": 0.637,
+        "danceability": 0.583,
+        "energy": 0.513,
+        "instrumentalness": 0,
+        "liveness": 0.352,
+        "loudness": -8.619,
+        "speechiness": 0.047,
+        "valence": 0.955
+      }
+    }
+  ],
+  "german pop": [
+    {
+      "uri": "spotify:track:44fNhBfmBUhaByY0651VIc",
+      "name": "Irgendwie, irgendwo, irgendwann (Special 12\" Dance Mix)",
+      "artists": [
+        "Nena"
+      ],
+      "genres": [
+        "neue deutsche welle",
+        "schlager",
+        "german pop"
+      ],
+      "features": {
+        "acousticness": 0.637,
+        "danceability": 0.583,
+        "energy": 0.513,
+        "instrumentalness": 0,
+        "liveness": 0.352,
+        "loudness": -8.619,
+        "speechiness": 0.047,
+        "valence": 0.955
+      }
+    }
+  ],
+  "bebop": [
+    {
+      "uri": "spotify:track:4KyaaVnbQJ2bRQqcARLr9E",
+      "name": "Odd Ones",
+      "artists": [
+        "SEATBELTS"
+      ],
+      "genres": [
+        "bebop",
+        "anime"
+      ],
+      "features": {
+        "acousticness": 0.494,
+        "danceability": 0.584,
+        "energy": 0.446,
+        "instrumentalness": 0.00783,
+        "liveness": 0.111,
+        "loudness": -7.042,
+        "speechiness": 0.028,
+        "valence": 0.222
+      }
+    },
+    {
+      "uri": "spotify:track:5Cmf3LmbLd9g79rS55X7qK",
+      "name": "The Real Folk Blues",
+      "artists": [
+        "Mai Yamane"
+      ],
+      "genres": [
+        "bebop",
+        "anime",
+        "city pop"
+      ],
+      "features": {
+        "acousticness": 0.537,
+        "danceability": 0.644,
+        "energy": 0.819,
+        "instrumentalness": 0,
+        "liveness": 0.639,
+        "loudness": -6.428,
+        "speechiness": 0.0745,
+        "valence": 0.821
+      }
+    }
+  ],
+  "anime": [
+    {
+      "uri": "spotify:track:4KyaaVnbQJ2bRQqcARLr9E",
+      "name": "Odd Ones",
+      "artists": [
+        "SEATBELTS"
+      ],
+      "genres": [
+        "bebop",
+        "anime"
+      ],
+      "features": {
+        "acousticness": 0.494,
+        "danceability": 0.584,
+        "energy": 0.446,
+        "instrumentalness": 0.00783,
+        "liveness": 0.111,
+        "loudness": -7.042,
+        "speechiness": 0.028,
+        "valence": 0.222
+      }
+    },
+    {
+      "uri": "spotify:track:5Cmf3LmbLd9g79rS55X7qK",
+      "name": "The Real Folk Blues",
+      "artists": [
+        "Mai Yamane"
+      ],
+      "genres": [
+        "bebop",
+        "anime",
+        "city pop"
+      ],
+      "features": {
+        "acousticness": 0.537,
+        "danceability": 0.644,
+        "energy": 0.819,
+        "instrumentalness": 0,
+        "liveness": 0.639,
+        "loudness": -6.428,
+        "speechiness": 0.0745,
+        "valence": 0.821
+      }
+    }
+  ],
+  "city pop": [
+    {
+      "uri": "spotify:track:5Cmf3LmbLd9g79rS55X7qK",
+      "name": "The Real Folk Blues",
+      "artists": [
+        "Mai Yamane"
+      ],
+      "genres": [
+        "bebop",
+        "anime",
+        "city pop"
+      ],
+      "features": {
+        "acousticness": 0.537,
+        "danceability": 0.644,
+        "energy": 0.819,
+        "instrumentalness": 0,
+        "liveness": 0.639,
+        "loudness": -6.428,
+        "speechiness": 0.0745,
+        "valence": 0.821
+      }
+    }
+  ],
+  "blues": [
+    {
+      "uri": "spotify:track:1a2iF9XymafjRk56q7oCxo",
+      "name": "Pride and Joy",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.00326,
+        "danceability": 0.352,
+        "energy": 0.604,
+        "instrumentalness": 0.00213,
+        "liveness": 0.208,
+        "loudness": -12.634,
+        "speechiness": 0.04,
+        "valence": 0.465
+      }
+    },
+    {
+      "uri": "spotify:track:03NejRMxYMMCFo2Ylsia6l",
+      "name": "Rude Mood",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.000532,
+        "danceability": 0.364,
+        "energy": 0.79,
+        "instrumentalness": 0.0022,
+        "liveness": 0.134,
+        "loudness": -6.252,
+        "speechiness": 0.0424,
+        "valence": 0.455
+      }
+    }
+  ],
+  "blues rock": [
+    {
+      "uri": "spotify:track:1a2iF9XymafjRk56q7oCxo",
+      "name": "Pride and Joy",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.00326,
+        "danceability": 0.352,
+        "energy": 0.604,
+        "instrumentalness": 0.00213,
+        "liveness": 0.208,
+        "loudness": -12.634,
+        "speechiness": 0.04,
+        "valence": 0.465
+      }
+    },
+    {
+      "uri": "spotify:track:03NejRMxYMMCFo2Ylsia6l",
+      "name": "Rude Mood",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.000532,
+        "danceability": 0.364,
+        "energy": 0.79,
+        "instrumentalness": 0.0022,
+        "liveness": 0.134,
+        "loudness": -6.252,
+        "speechiness": 0.0424,
+        "valence": 0.455
+      }
+    }
+  ],
+  "classic blues": [
+    {
+      "uri": "spotify:track:1a2iF9XymafjRk56q7oCxo",
+      "name": "Pride and Joy",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.00326,
+        "danceability": 0.352,
+        "energy": 0.604,
+        "instrumentalness": 0.00213,
+        "liveness": 0.208,
+        "loudness": -12.634,
+        "speechiness": 0.04,
+        "valence": 0.465
+      }
+    },
+    {
+      "uri": "spotify:track:03NejRMxYMMCFo2Ylsia6l",
+      "name": "Rude Mood",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.000532,
+        "danceability": 0.364,
+        "energy": 0.79,
+        "instrumentalness": 0.0022,
+        "liveness": 0.134,
+        "loudness": -6.252,
+        "speechiness": 0.0424,
+        "valence": 0.455
+      }
+    }
+  ],
+  "southern rock": [
+    {
+      "uri": "spotify:track:1a2iF9XymafjRk56q7oCxo",
+      "name": "Pride and Joy",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.00326,
+        "danceability": 0.352,
+        "energy": 0.604,
+        "instrumentalness": 0.00213,
+        "liveness": 0.208,
+        "loudness": -12.634,
+        "speechiness": 0.04,
+        "valence": 0.465
+      }
+    },
+    {
+      "uri": "spotify:track:03NejRMxYMMCFo2Ylsia6l",
+      "name": "Rude Mood",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.000532,
+        "danceability": 0.364,
+        "energy": 0.79,
+        "instrumentalness": 0.0022,
+        "liveness": 0.134,
+        "loudness": -6.252,
+        "speechiness": 0.0424,
+        "valence": 0.455
+      }
+    }
+  ],
+  "modern blues": [
+    {
+      "uri": "spotify:track:1a2iF9XymafjRk56q7oCxo",
+      "name": "Pride and Joy",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.00326,
+        "danceability": 0.352,
+        "energy": 0.604,
+        "instrumentalness": 0.00213,
+        "liveness": 0.208,
+        "loudness": -12.634,
+        "speechiness": 0.04,
+        "valence": 0.465
+      }
+    },
+    {
+      "uri": "spotify:track:03NejRMxYMMCFo2Ylsia6l",
+      "name": "Rude Mood",
+      "artists": [
+        "Stevie Ray Vaughan"
+      ],
+      "genres": [
+        "blues",
+        "blues rock",
+        "classic blues",
+        "southern rock",
+        "modern blues"
+      ],
+      "features": {
+        "acousticness": 0.000532,
+        "danceability": 0.364,
+        "energy": 0.79,
+        "instrumentalness": 0.0022,
+        "liveness": 0.134,
+        "loudness": -6.252,
+        "speechiness": 0.0424,
+        "valence": 0.455
+      }
+    }
+  ],
+  "southern gothic": [
+    {
+      "uri": "spotify:track:0XfwXFXOI7oys9rsZ2sjrt",
+      "name": "I Lied to You",
+      "artists": [
+        "Miles Caton",
+        "Sinners Movie"
+      ],
+      "genres": [
+        "southern gothic"
+      ]
+    },
+    {
+      "uri": "spotify:track:0XfwXFXOI7oys9rsZ2sjrt",
+      "name": "I Lied to You",
+      "artists": [
+        "Miles Caton",
+        "Sinners Movie"
+      ],
+      "genres": [
+        "southern gothic"
+      ]
+    },
+    {
+      "uri": "spotify:track:1esmJ8t2PRbYt2yMx2aSEW",
+      "name": "Rocky Road to Dublin",
+      "artists": [
+        "Jack O’Connell",
+        "Brian Dunphy",
+        "Darren Holden",
+        "Sinners Movie"
+      ],
+      "genres": [
+        "southern gothic"
+      ]
+    },
+    {
+      "uri": "spotify:track:3gpofCUBcNhtLy2mN0ioE5",
+      "name": "Pale, Pale Moon",
+      "artists": [
+        "Jayme Lawson",
+        "Sinners Movie"
+      ],
+      "genres": [
+        "southern gothic"
+      ]
+    },
+    {
+      "uri": "spotify:track:3gpofCUBcNhtLy2mN0ioE5",
+      "name": "Pale, Pale Moon",
+      "artists": [
+        "Jayme Lawson",
+        "Sinners Movie"
+      ],
+      "genres": [
+        "southern gothic"
+      ]
+    }
+  ]
+}
