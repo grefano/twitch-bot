@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv'
 dotenv.config()
 
-import {spotify} from "./api/initspotify.js";
+import {spotifyReq} from "./api/initspotify.js";
 import { botNick, botOAuth, botChannel, idClient, idBroadcaster, idMod} from "./api/twitch.js"
 import { isSetIterator } from 'node:util/types';
 
@@ -74,7 +74,7 @@ socket.addEventListener('message', async event => {
         const command = getMsgCommand(msgCommand)
         if (command == false) return;
         
-        const context: IContextCommand = {socket, msgId, msgUsername, msgArgs, botChannel, botOAuth, msgCommand, idClient, idBroadcaster, idMod, spotifyTokenAccess: spotify.getAccessToken()}
+        const context: IContextCommand = {socket, msgId, msgUsername, msgArgs, botChannel, botOAuth, msgCommand, idClient, idBroadcaster, idMod, spotifyTokenAccess: await spotifyReq((api) => api.getAccessToken())}
         const commands = createCommands(context)
         
         if (typeof commands[command] === 'function'){

@@ -1,4 +1,4 @@
-import { spotify } from "../api/initspotify.js";
+import { spotifyReq } from "../api/initspotify.js";
 // import {} from "../api/controlspotify.js"
 import { addTrackToQueue } from "../api/controlspotify.js";
 interface Song{
@@ -19,12 +19,12 @@ async function main() {
 
   
   
-  let accesstoken = process.env.SPOTIFY_ACCESS_TOKEN
-  console.log(accesstoken)
-  spotify.setAccessToken(accesstoken)
+  // let accesstoken = process.env.SPOTIFY_ACCESS_TOKEN
+  // console.log(accesstoken)
+  // spotify.setAccessToken(accesstoken)
 
 
-  let reqlikedsongs = spotify.getMySavedTracks()
+  let reqlikedsongs = spotifyReq((api) => api.getMySavedTracks())
   let likedsongs = (await reqlikedsongs).body.items
   // likedsongs[0].track.
   let names = likedsongs.map((value) => {
@@ -38,7 +38,7 @@ async function main() {
   for (const s of likedsongs){
     console.log(s.track.name + ":")
     for (const a of s.track.artists){
-      let artist = await spotify.getArtist(a.id)
+      let artist = await spotifyReq((api) => api.getArtist(a.id))
       console.log("- " + artist.body.name + " " + JSON.stringify(artist.body.genres))
       
       for(const g of artist.body.genres){
