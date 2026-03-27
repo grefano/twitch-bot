@@ -1,4 +1,5 @@
 import { addTrackToQueue } from "../api/controlspotify.js";
+import { spotifyReq } from "../api/initspotify.js";
 const isValidUrl = (str: string) => {
     try {
         new URL(str);
@@ -54,14 +55,9 @@ export default async function commandSongRequest (context: IContextCommand){
         case 'title':
             console.log('title')
             
-            const search_res = await fetch(`https://api.spotify.com/v1/search?q=${encodeURIComponent(argTrack)}&type=track&limit=1`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${spotifyTokenAccess}` 
-                }
-            })
-            const search_data = await search_res.json()
-            trackid = search_data.tracks.items[0]?.id
+            const search_res = await spotifyReq((api) => api.searchTracks(encodeURIComponent(argTrack)))
+            const search_data = search_res.body
+            trackid = search_data.tracks.items[0]?.uri
 
 
             break;
