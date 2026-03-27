@@ -3,12 +3,20 @@ import { spotifyReq } from "../api/initspotify.js";
 import { addTrackToQueue } from "../api/controlspotify.js";
 import * as fs from 'fs'
 import {readFile} from 'fs/promises'
+import { threadName } from "worker_threads";
 interface Song{
   uri: string,
+  id: string,
   name: string,
-  artists: string[],
-  genres: string[],
+  artists: Artist[],
+  genres?: string[],
   features?: SongFeatures,
+}
+interface Artist{
+  name: string,
+  uri: string,
+  id: string,
+  genres?: string[]
 }
 interface SongFeatures{
   acousticness?: number,
@@ -20,6 +28,44 @@ interface SongFeatures{
   speechiness?: number,
   valence?: number,
 }
+function apiResponseToSongArray(songs: SpotifyApi.SavedTrackObject[]): Song[]{
+  return songs.map((val) => {
+    
+    let track = val.track
+    return {uri: track.uri, id: track.id, name: track.name, artists: track.artists.map((val) => ({id: val.id, name: val.name, uri: val.uri}))}
+  })
+}
+
+async function songsEnrichFeatures(songs: Song[]){
+  console.log("songs to enrich", JSON.stringify(songs.map((val) => val.name)))
+  let songsfeatures = await getSongFeatures(songs.map((val) => val.id))
+  console.log("songs features", JSON.stringify(songsfeatures.map((val) => val.acousticness)))
+  for(let i = 0; i < songs.length; i++){
+    songs[i].features = songsfeatures[i]
+  }
+}
+async function createGenreMap(songs: Song[]): Promise<Map<string, Set<Song>>>{
+
+  let genreToSongs = new Map<string, Set<Song>>()
+
+  for (let i = 0; i < songs.length; i++){
+    let s = songs[i]
+    console.log(s.name + ":")
+    for (const a of s.artists){
+      let artist = await spotifyReq((api) => api.getArtist(a.id))
+      console.log("- " + artist.body.name + " " + artist.body.genres[0])
+      
+      for(const g of artist.body.genres){
+        const set = genreToSongs.get(g) ?? new Set<Song>()
+        set.add({uri: s.uri, id: s.id, name: s.name, artists: s.artists, genres: artist.body.genres, features: s.features})
+        genreToSongs.set(g, set)
+
+      }
+    }
+  }
+
+  return new Promise<Map<string, Set<Song>>>(resolve => resolve(genreToSongs))
+}
 async function getSongFeatures(trackIds: string[]): Promise<SongFeatures[]>{
   let tracksidformat = trackIds.reduce((prev, cur) => {
     if (prev != cur){
@@ -29,20 +75,31 @@ async function getSongFeatures(trackIds: string[]): Promise<SongFeatures[]>{
       return prev
     }
   }, trackIds[0])
-
-  // tracksidformat = trackIds[0]
   let res = (await fetch(`https://api.reccobeats.com/v1/audio-features?ids=${tracksidformat}`, {method: 'GET'}))
   let data: any[] = (await res.json())['content']
-  let result = data.map((val) => {return {
-    acousticness: val["acousticness"],
-    danceability: val["danceability"],
-    energy: val["energy"],
-    instrumentalness: val["instrumentalness"],
-    liveness: val["liveness"],
-    loudness: val["loudness"],
-    speechiness: val["speechiness"],
-    valence: val["valence"],
-  }})
+
+  let result = []
+  trackIds.forEach((val) => {
+    let index = data.findIndex((a) => {
+      let inferredID = (a['href'] as string).split('/').at(-1)
+      return inferredID == val
+    })
+    if (index >= 0){
+      result.push({
+        acousticness: data[index]["acousticness"],
+        danceability: data[index]["danceability"],
+        energy: data[index]["energy"],
+        instrumentalness: data[index]["instrumentalness"],
+        liveness: data[index]["liveness"],
+        loudness: data[index]["loudness"],
+        speechiness: data[index]["speechiness"],
+        valence: data[index]["valence"],
+      })
+    } else {
+      result.push({})
+    }
+  })
+
   return result
 }
 async function main() {
@@ -50,47 +107,37 @@ async function main() {
 
 
   let reqlikedsongs = spotifyReq((api) => api.getMySavedTracks())
-  let likedsongs = (await reqlikedsongs).body.items
+  let likedsongs = apiResponseToSongArray((await reqlikedsongs).body.items)
 
   const file = await readFile("songs.json", 'utf-8')
   const jsonfile = JSON.parse(file)
   const storedsongs = new Map<string, Set<Song>>(Object.entries(jsonfile).map(([genre, songs]) => [genre, new Set(songs as Song[])]))
 
-  console.log('json read', storedsongs)
-  for(const a of storedsongs.get('mpb').values()){
-    console.log('a', a.artists)
-    console.log('b', a.genres)
-    console.log('c', a.features)
-    
-  }
 
 
-  // comparar liekdsongs com storedsongs
 
-  
-  return
-
-
-  let res = await getSongFeatures(likedsongs.map((val) => val.track.id)) 
-  // console.log(JSON.stringify(a, null, 2))
-
-  let genreToSongs = new Map<string, Set<Song>>()
-
-  for (let i = 0; i < likedsongs.length; i++){
-    let s = likedsongs[i]
-    console.log(s.track.name + ":")
-    for (const a of s.track.artists){
-      let artist = await spotifyReq((api) => api.getArtist(a.id))
-      console.log("- " + artist.body.name + " " + JSON.stringify(artist.body.genres))
+  let storeduniquesongs = new Set<Song>()
+  for(const genresongs of storedsongs.values()){
+    for(const song of genresongs.values()){
+      console.log(JSON.stringify(song, null, 2))
+      storeduniquesongs.add(song)
       
-      for(const g of artist.body.genres){
-        const set = genreToSongs.get(g) ?? new Set<Song>()
-        set.add({uri: s.track.uri, name: s.track.name, artists: s.track.artists.map(val => val.name), genres: artist.body.genres, features: res[i]})
-        genreToSongs.set(g, set)
-
-      }
     }
   }
+
+
+  // let newsongs = new Set<Song>()
+  let newsongs = likedsongs;
+  // comparar liekdsongs com storedsongs
+  for(const s of storeduniquesongs.values()){
+    
+    newsongs = newsongs.filter(song => song.uri != s.uri)
+  }
+  console.log('new songs', newsongs)
+  
+  songsEnrichFeatures(newsongs)
+
+  let genreToSongs = await createGenreMap(newsongs)
   console.log(genreToSongs)
 
   const jsonpath = "songs.json"
