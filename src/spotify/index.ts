@@ -37,16 +37,16 @@ function apiResponseToSongArray(songs: SpotifyApi.SavedTrackObject[]): Song[]{
 }
 
 async function songsEnrichFeatures(songs: Song[]){
-  console.log("songs to enrich", JSON.stringify(songs.map((val) => val.name)))
   let songsfeatures = await getSongFeatures(songs.map((val) => val.id))
-  console.log("songs features", JSON.stringify(songsfeatures.map((val) => val.acousticness)))
   for(let i = 0; i < songs.length; i++){
     songs[i].features = songsfeatures[i]
   }
 }
-async function createGenreMap(songs: Song[]): Promise<Map<string, Set<Song>>>{
+type GenreMap = Map<string, Map<string, Song>>
 
-  let genreToSongs = new Map<string, Set<Song>>()
+async function createGenreMap(songs: Song[]): Promise<GenreMap>{
+
+  let genreToSongs: GenreMap = new Map()
 
   for (let i = 0; i < songs.length; i++){
     let s = songs[i]
@@ -55,15 +55,17 @@ async function createGenreMap(songs: Song[]): Promise<Map<string, Set<Song>>>{
       let artist = await spotifyReq((api) => api.getArtist(a.id))
       
       for(const g of artist.body.genres){
-        const set = genreToSongs.get(g) ?? new Set<Song>()
-        set.add({uri: s.uri, id: s.id, name: s.name, artists: s.artists, genres: artist.body.genres, features: s.features})
-        genreToSongs.set(g, set)
-
+        let song = {uri: s.uri, id: s.id, name: s.name, artists: s.artists, genres: artist.body.genres, features: s.features}
+        const songmap = genreToSongs.get(g) ?? new Map<string, Song>()
+        if (!songmap.has(s.id)){
+          songmap.set(s.id, song);
+        }
+        genreToSongs.set(g, songmap)
       }
     }
   }
 
-  return new Promise<Map<string, Set<Song>>>(resolve => resolve(genreToSongs))
+  return new Promise<GenreMap>(resolve => resolve(genreToSongs))
 }
 async function getSongFeatures(trackIds: string[]): Promise<SongFeatures[]>{
   let tracksidformat = trackIds.reduce((prev, cur) => {
@@ -104,6 +106,17 @@ async function getSongFeatures(trackIds: string[]): Promise<SongFeatures[]>{
 
   return result
 }
+
+  function genreMapPrint(genremap: GenreMap){
+    for(const [genre, songmap] of genremap.entries()){
+      console.log("genre: ", genre)
+      // console.log("songmap", songmap, "instance of map", songmap instanceof Map, "size", songmap.size)
+      for(const [id, song] of songmap.entries()){
+        console.log("- ", song.name, id, song.features ? JSON.stringify(Object.keys(song.features)) : "")
+      }
+    }
+
+  }
 async function main() {
   const jsonpath = "songs.json"
 
@@ -114,42 +127,46 @@ async function main() {
 
   const file = await readFile(jsonpath, 'utf-8')
   const jsonfile = JSON.parse(file)
-  const storedsongs = new Map<string, Set<Song>>(Object.entries(jsonfile).map(([genre, songs]) => [genre, new Set(songs as Song[])]))
+  const storedsongs: GenreMap = new Map(Object.entries(jsonfile).map(
+    ([genre, songmap]) => [genre, (new Map(Object.entries(songmap as Record<string, Song>)))]
+  ))
+  // console.log("stored songs")
+  // genreMapPrint(storedsongs)
 
 
   console.log('liked songs', likedsongs.map((val) => val.name))
 
-
+  console.log('stored set')
   let storeduniquesongs = new Set<Song>()
   for(const genresongs of storedsongs.values()){
     for(const song of genresongs.values()){
-      storeduniquesongs.add(song)
+        storeduniquesongs.add(song)
     }
   }
 
-  let _storedsongs = ""
-  for(const s of storeduniquesongs){
-    _storedsongs += s.name
-  }
-  console.log('stored songs', _storedsongs)
 
 
   let newsongs = likedsongs;
-  for(const s of storeduniquesongs.values()){
-    newsongs = newsongs.filter(song => song.uri != s.uri)
+  for(const s of storeduniquesongs){
+    newsongs = newsongs.filter(song => {
+      return song.uri != s.uri
+    })
   }
   console.log('new songs', newsongs.map((val) => val.name))
   
   songsEnrichFeatures(newsongs)
-
+  
   let genreToSongs = await createGenreMap([...storeduniquesongs, ...newsongs])
+  genreMapPrint(genreToSongs)
 
-  fs.writeFileSync(jsonpath, JSON.stringify(Object.fromEntries( [...genreToSongs.entries()].map(([genre, songs]) => [genre, [...songs]])), null, 2))
 
+  // fs.writeFileSync(jsonpath, JSON.stringify(Object.fromEntries( [...genreToSongs.entries()].map(([genre, songs]) => [genre, [...songs]])), null, 2))
+  fs.writeFileSync(jsonpath, JSON.stringify(Object.fromEntries( [...genreToSongs.entries()].map(([genre, songmap]) => [genre, Object.fromEntries(songmap) ])), null, 2))
+  // "genre": [] 
   // add genre to queue
   let songs = genreToSongs.get("art rock")
-  for (const j of songs){
-    addTrackToQueue(j.uri)
+  for (const [id, song] of songs){
+    addTrackToQueue(song.uri)
   }
 
 
